@@ -1,11 +1,3 @@
-" Configuration file for vim
-set modelines=0		" CVE-2007-2438
-
-" Normally we use vim-extensions. If you want true vi-compatibility
-" remove change the following statements
-set nocompatible	" Use Vim defaults instead of 100% vi compatibility
-set backspace=2		" more powerful backspacing
-
 "pathogen plugin: a plugin to rule them all
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
