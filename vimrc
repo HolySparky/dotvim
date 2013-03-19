@@ -1,14 +1,15 @@
 "pathogen plugin: a plugin to rule them all
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-execute pathogen#infect()
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags()
+"execute pathogen#infect()
 
-filetype plugin indent on
 
 "the followings are the rc configurations that I truly understand
 set nocp    "different from old vi
 set ru      "rulers
 set hls     "high light
+set t_Co=256
+colorscheme ir_black
 syntax on   "you know if you are a programmer
 set backspace=indent,eol,start      "to really backspace everything
 set whichwrap=b,s,<,>,[,]           "feel free to move, even at eol
@@ -49,9 +50,6 @@ set softtabstop=4
 set tabstop=8
 
 
-if !has('gui_running')
-    set background=dark
-endif
 
 "For MacVim
 if has("gui_running")
