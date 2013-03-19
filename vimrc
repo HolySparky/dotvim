@@ -6,6 +6,11 @@ set modelines=0		" CVE-2007-2438
 set nocompatible	" Use Vim defaults instead of 100% vi compatibility
 set backspace=2		" more powerful backspacing
 
+"pathogen plugin: a plugin to rule them all
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+execute pathogen#infect()
+
 filetype plugin indent on
 
 "the followings are the rc configurations that I truly understand
@@ -65,33 +70,3 @@ if has("gui_running")
         set lines=40             " 设置长
 endif
 
-let html_no_pre=1
-"let html_use_css=1
-
-
-"Latex stuff
- set shellslash
- set grepprg=grep\ -nH\ $*
- set iskeyword+=:
-
-" Run LaTeX through TexShop
-function! SRJ_runLatex()
-    if &ft != 'tex'
-        echo "calling srj_runLatex from a non-tex file"
-        return ''
-    end
- 
-    "write the file
-    :w
-
-    let thePath = getcwd() . '/'. expand("%")
- 
-    let execString = 'osascript -e "tell app
-\"TeXShop\"" -e "set theDoc to open ((POSIX
- file \"'.thePath.'\") as alias)" -e "tell theDoc to latexinteractive" -e "end tell"'
-    exec 'silent! !'.execString
-       return ''
-endfunction
-   no  <expr> <D-r> SRJ_runLatex()
-   vn  <expr> <D-r> SRJ_runLatex()
-   ino <expr> <D-r> SRJ_runLatex()
